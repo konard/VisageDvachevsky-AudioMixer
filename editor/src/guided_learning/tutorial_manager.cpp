@@ -617,7 +617,7 @@ TutorialProgress NMTutorialManager::getTutorialProgress(const std::string& tutor
   if (it != m_progress.tutorials.end()) {
     return it->second;
   }
-  return TutorialProgress{tutorialId};
+  return TutorialProgress{tutorialId, TutorialState::NotStarted, 0, {}, "", "", false, false};
 }
 
 HintProgress NMTutorialManager::getHintProgress(const std::string& hintId) const {
@@ -625,7 +625,7 @@ HintProgress NMTutorialManager::getHintProgress(const std::string& hintId) const
   if (it != m_progress.hints.end()) {
     return it->second;
   }
-  return HintProgress{hintId};
+  return HintProgress{hintId, 0, false, ""};
 }
 
 void NMTutorialManager::resetTutorialProgress(const std::string& tutorialId) {

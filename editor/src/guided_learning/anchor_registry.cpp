@@ -42,15 +42,17 @@ void NMAnchorRegistry::registerAnchor(const std::string& id, QWidget* widget,
 
   // Create rect provider that uses the widget
   info.getRect = [weakWidget = QPointer<QWidget>(widget)]() -> QRect {
-    if (weakWidget) {
-      return QRect(weakWidget->mapToGlobal(QPoint(0, 0)), weakWidget->size());
+    QWidget* w = weakWidget.data();
+    if (w) {
+      return QRect(w->mapToGlobal(QPoint(0, 0)), w->size());
     }
     return QRect();
   };
 
   // Create visibility provider
   info.isVisible = [weakWidget = QPointer<QWidget>(widget)]() -> bool {
-    return weakWidget && weakWidget->isVisible();
+    QWidget* w = weakWidget.data();
+    return w && w->isVisible();
   };
 
   m_anchors[id] = std::move(info);

@@ -276,7 +276,8 @@ void NMHelpOverlay::paintSpotlight(QPainter& painter, const QRect& targetRect) {
 
   // Fill with dim color
   QColor dimColor = m_style.spotlightDimColor;
-  dimColor.setAlphaF(static_cast<float>(dimColor.alphaF() * m_spotlightOpacity));
+  qreal newAlpha = static_cast<qreal>(dimColor.alphaF()) * m_spotlightOpacity;
+  dimColor.setAlphaF(static_cast<float>(newAlpha));
   painter.fillPath(path, dimColor);
 
   // Draw subtle border around target
