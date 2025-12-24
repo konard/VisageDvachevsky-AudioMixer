@@ -11,6 +11,7 @@
 #include "NovelMind/core/types.hpp"
 #include <optional>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 namespace NovelMind::editor::guided_learning {
