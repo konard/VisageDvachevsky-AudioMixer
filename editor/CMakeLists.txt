@@ -28,6 +28,13 @@ set(CMAKE_AUTORCC ON)
 
 # Qt6 Editor Library
 add_library(novelmind_editor STATIC
+    # Guided Learning System (Editor-only subsystem)
+    src/guided_learning/tutorial_types.cpp
+    src/guided_learning/anchor_registry.cpp
+    src/guided_learning/tutorial_manager.cpp
+    src/guided_learning/help_overlay.cpp
+    src/guided_learning/tutorial_subsystem.cpp
+
     # Core editor systems (backend - retained from previous implementation)
     src/editor_runtime_host.cpp
     src/editor_runtime_host_inspection.cpp
@@ -142,6 +149,9 @@ add_library(novelmind_editor STATIC
     src/qt/panels/nm_debug_overlay_panel.cpp
     src/qt/panels/nm_issues_panel.cpp
 
+    # Phase 6 - Guided Learning System Panel
+    src/qt/panels/nm_help_hub_panel.cpp
+
     # Performance optimization headers
     include/NovelMind/editor/qt/lazy_thumbnail_loader.hpp
     include/NovelMind/editor/qt/timeline_render_cache.hpp
@@ -189,6 +199,14 @@ add_library(novelmind_editor STATIC
     include/NovelMind/editor/qt/panels/nm_issues_panel.hpp
     include/NovelMind/editor/qt/panels/nm_audio_mixer_panel.hpp
     include/NovelMind/editor/qt/panels/nm_animation_adapter.hpp
+    include/NovelMind/editor/qt/panels/nm_help_hub_panel.hpp
+
+    # Guided Learning System headers
+    include/NovelMind/editor/guided_learning/tutorial_types.hpp
+    include/NovelMind/editor/guided_learning/anchor_registry.hpp
+    include/NovelMind/editor/guided_learning/tutorial_manager.hpp
+    include/NovelMind/editor/guided_learning/help_overlay.hpp
+    include/NovelMind/editor/guided_learning/tutorial_subsystem.hpp
 
     # Qt Resources
     resources/editor_resources.qrc
