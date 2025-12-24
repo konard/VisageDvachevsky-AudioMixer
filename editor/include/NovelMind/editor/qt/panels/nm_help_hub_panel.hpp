@@ -17,6 +17,8 @@
 
 #include "NovelMind/editor/guided_learning/tutorial_types.hpp"
 #include "NovelMind/editor/qt/nm_dock_panel.hpp"
+#include <QComboBox>
+#include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
 #include <QPushButton>
