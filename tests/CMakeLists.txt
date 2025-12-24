@@ -63,6 +63,7 @@ if(NOVELMIND_BUILD_EDITOR)
         integration/test_voice_manager.cpp
         integration/test_project_json.cpp
         unit/test_performance_cache.cpp
+        unit/test_tutorial_types.cpp
     )
 
     target_link_libraries(integration_tests
