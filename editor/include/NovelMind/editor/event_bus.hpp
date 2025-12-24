@@ -517,9 +517,10 @@ public:
 
   /**
    * @brief Convenience method to publish typed event
+   * @note Named emitEvent instead of emit to avoid conflict with Qt's emit macro
    */
   template <typename T, typename... Args>
-  void emit([[maybe_unused]] Args &&...args) {
+  void emitEvent([[maybe_unused]] Args &&...args) {
     auto event = std::make_unique<T>();
     // Initialize event with args if needed (via aggregate init or setters)
     publish(std::move(event));

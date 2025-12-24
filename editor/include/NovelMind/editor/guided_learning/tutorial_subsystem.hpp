@@ -19,8 +19,10 @@
  * It does not compile into runtime builds.
  */
 
-#include "NovelMind/core/result.hpp"
+// Include event_bus.hpp BEFORE Qt headers to avoid Qt's 'emit' macro
+// interfering with EventBus::emit template method
 #include "NovelMind/editor/event_bus.hpp"
+#include "NovelMind/core/result.hpp"
 #include <QObject>
 #include <memory>
 #include <string>
@@ -179,9 +181,11 @@ signals:
    */
   void enabledChanged(bool enabled);
 
+public:
+  ~NMTutorialSubsystem() override;
+
 private:
   NMTutorialSubsystem();
-  ~NMTutorialSubsystem() override;
 
   // Non-copyable
   NMTutorialSubsystem(const NMTutorialSubsystem&) = delete;

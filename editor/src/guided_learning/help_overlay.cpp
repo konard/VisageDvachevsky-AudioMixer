@@ -276,7 +276,7 @@ void NMHelpOverlay::paintSpotlight(QPainter& painter, const QRect& targetRect) {
 
   // Fill with dim color
   QColor dimColor = m_style.spotlightDimColor;
-  dimColor.setAlphaF(dimColor.alphaF() * m_spotlightOpacity);
+  dimColor.setAlphaF(static_cast<float>(dimColor.alphaF() * m_spotlightOpacity));
   painter.fillPath(path, dimColor);
 
   // Draw subtle border around target
@@ -661,7 +661,8 @@ QSize NMHelpOverlay::calculateContentSize(const ActiveHint& hint) {
 }
 
 void NMHelpOverlay::mousePressEvent(QMouseEvent* event) {
-  for (const auto& hint : m_activeHints) {
+  // Only check button interactions if we have active hints
+  if (!m_activeHints.empty()) {
     if (m_buttonRects.nextButton.contains(event->pos())) {
       emit nextClicked();
       return;
@@ -737,15 +738,11 @@ bool NMHelpOverlay::event(QEvent* event) {
 }
 
 void NMHelpOverlay::updateHintPositions() {
-  bool needsUpdate = false;
-
-  for (auto& hint : m_activeHints) {
-    // Look up the anchor ID from the hint to get current position
-    // Note: We need to store anchor ID in the hint for this to work
-    // For now, just update based on stored target rect
-  }
-
-  if (needsUpdate) {
+  // Look up anchor IDs from hints to get current positions
+  // Note: We need to store anchor ID in the hint for this to work
+  // For now, just update based on stored target rect
+  // This is a placeholder for future anchor position tracking
+  if (!m_activeHints.empty()) {
     update();
   }
 }

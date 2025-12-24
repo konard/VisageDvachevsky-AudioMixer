@@ -8,6 +8,7 @@
 #include "NovelMind/editor/guided_learning/help_overlay.hpp"
 #include "NovelMind/editor/guided_learning/tutorial_manager.hpp"
 #include "NovelMind/editor/settings_registry.hpp"
+#include <QCoreApplication>
 #include <QDebug>
 #include <QDir>
 #include <QStandardPaths>
